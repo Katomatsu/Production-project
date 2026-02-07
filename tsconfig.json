@@ -1,0 +1,25 @@
+{
+	"compilerOptions": {
+		"outDir": "./build/",
+		"sourceMap": true,
+		"noImplicitAny": true,
+		"module": "esnext",
+		"baseUrl": ".",
+		"target": "es5",
+		"jsx": "react-jsx",
+		"allowJs": true,
+		"moduleResolution": "node",
+		// esModuleInterop позволяет работать с пакетами которые используют common js
+		// как с обычными пакетами используя import ...
+		"esModuleInterop": true,
+		// если какая-то библеотека не имеет default import
+		// loader'ы вроде ts-loader или babel-loader создают их автоматически
+		// то есть вместо import * as ss from 'ss' можно import ss from 'ss'
+		"allowSyntheticDefaultImports": true
+	},
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  }
+}
