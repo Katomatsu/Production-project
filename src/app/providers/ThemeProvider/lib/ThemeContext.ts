@@ -13,10 +13,3 @@ export interface ThemeContextProps {
 export const ThemeContext = createContext<ThemeContextProps>({});
 
 export const LOCAL_STORAGE_THEME_KEY = 'theme';
-export const useThemeContext = () => {
-	const themeContext = useContext(ThemeContext);
-
-	if (!themeContext) console.warn('ThemeContext not found');
-
-	return themeContext;
-};

@@ -5,6 +5,9 @@
 		"noImplicitAny": true,
 		"module": "esnext",
 		"baseUrl": ".",
+		"paths": {
+			"~/*": ["./src/*"]
+		},
 		"target": "es5",
 		"jsx": "react-jsx",
 		"allowJs": true,
@@ -17,9 +20,9 @@
 		// то есть вместо import * as ss from 'ss' можно import ss from 'ss'
 		"allowSyntheticDefaultImports": true
 	},
-  "ts-node": {
-    "compilerOptions": {
-      "module": "CommonJS"
-    }
-  }
+	"ts-node": {
+		"compilerOptions": {
+			"module": "CommonJS"
+		}
+	}
 }
