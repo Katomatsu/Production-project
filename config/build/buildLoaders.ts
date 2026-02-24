@@ -1,7 +1,6 @@
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { RuleSetRule } from 'webpack';
 import { BuildOptions } from './types/config';
-import { loadavg } from 'os';
 
 export function buildLoaders(options: BuildOptions): RuleSetRule[] {
 	// Если не используется ts - нужен babel-loader для ts
@@ -23,6 +22,23 @@ export function buildLoaders(options: BuildOptions): RuleSetRule[] {
 		exclude: /node_modules/,
 	};
 
+	const babelLoader = {
+		test: /\.(js|jsx|tsx)$/,
+		exclude: /node_modules/,
+		use: {
+			loader: 'babel-loader',
+			options: {
+				presets: ['@babel/preset-env'],
+				plugins: [
+					[
+						'i18next-extract',
+						{ locales: ['ru', 'en'], keyAsDefaultValue: true },
+					],
+				],
+			},
+		},
+	};
+
 	const cssLoader = {
 		test: /\.s[ac]ss$/i,
 		use: [
@@ -41,5 +57,5 @@ export function buildLoaders(options: BuildOptions): RuleSetRule[] {
 			'sass-loader',
 		],
 	};
-	return [svgLoader, typescriptLoader, cssLoader, fileLoader];
+	return [svgLoader, babelLoader, typescriptLoader, cssLoader, fileLoader];
 }
