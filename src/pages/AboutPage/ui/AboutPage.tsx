@@ -1,9 +1,10 @@
-import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const AboutPage = () => {
+	const {t} = useTranslation('about')
 	return (
 		<>
-			<Link to={'/'}>MainPage</Link>
+			<div>{t('aboutPageTitle')}</div>
 		</>
 	);
 };

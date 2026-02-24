@@ -4,17 +4,24 @@ import './styles/index.scss';
 import { classNames } from '~/shared/lib/classNames/classNames';
 import { AppRouter } from './providers/router/ui/AppRouter';
 import { Navbar } from '~/widgets/Navbar';
-import { ThemeSwitcher } from '~/shared/ui/ThemeSwitcher';
-
+import { Sidebar } from '~/widgets/Sidebar';
+import { Suspense } from 'react';
+import { useTranslation } from 'react-i18next';
 
 
 export const App = () => {
-	const { theme} = useThemeContext()
+	const { theme } = useThemeContext()
 
 	return (
 		<div className={classNames('app', {}, [theme])}>
-			<Navbar />
-			<AppRouter />
+			<Suspense fallback={''}>
+
+				<Navbar />
+				<div className='content-page'>
+					<Sidebar />
+					<AppRouter />
+				</div>
+			</Suspense>
 		</div>
 	);
 };
